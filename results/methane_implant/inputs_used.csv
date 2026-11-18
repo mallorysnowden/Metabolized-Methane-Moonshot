@@ -1,0 +1,65 @@
+input,base,low,high,unit,source
+finance.company_discount_rate,0.1,0.08,0.15,"fraction/yr, real",Assumption: same rate for every project
+finance.customer_discount_rate,0.08,0.06,0.1,"fraction/yr, real",Assumption: used for customer life-cycle cost vs BAU
+finance.horizon,15,,,yr,Assumption: long enough to reach NOAK in most cases
+finance.cad_usd,0.73,,,USD per CAD,Assumption (approximate 2026 rate)
+finance.eur_usd,1.15,,,USD per EUR,"Implied by EASA 2025 reference price reported as EUR 1,925 = USD 2,205-2,235/t"
+scale.big_enough_revenue,1000000000,,,$/yr at full scale,Judgment: a proxy for the Gimbal's 'big-enough line' for an Alphabet business; not stated in the Gimbal
+uncertainty.monte_carlo_draws,2000,,,draws,Convention: triangular distribution on every input with a low/high
+rubric.impact,0.2,,,weight,Mallory's rubric: transformational impact
+rubric.breakthrough,0.2,,,weight,Mallory's rubric: breakthrough potential
+rubric.feasibility,0.15,,,weight,Mallory's rubric: technical feasibility
+rubric.economics,0.15,,,weight,Mallory's rubric: economic competitiveness
+rubric.scalability,0.1,,,weight,Mallory's rubric: scalability
+rubric.demand,0.1,,,weight,Mallory's rubric: market demand and adoption
+rubric.white_space,0.05,,,weight,Mallory's rubric: competitive white space
+rubric.validation,0.05,,,weight,Mallory's rubric: speed and cost of validation
+implant.efficacy,0.2,0.1,0.3,"fraction of enteric methane cut, averaged over implant life",ArkeaBio targets 20%; its prototype vaccine cut methane 12.9% over 105 days (Texas A&M trial)
+implant.duration_months,12,6,18,months per implant,Target. ArkeaBio aims for a vaccine effective for 6 months; slow release is this concept's breakthrough.
+implant.cogs,2.5,1.5,5.0,"$ per dose at NOAK (antigen, release matrix, RFID tag)",Assumption. Antigen doses are milligram-scale (ArkeaBio); beef growth implants sell for ~$1-3 per calf.
+implant.capex_per_dose,1.0,0.5,3.0,$ per dose/yr of new manufacturing capacity,"Assumption: contract manufacturing for the biologic, in-house assembly"
+implant.admin_cost,0.5,0.25,2.0,$ farmer labor per dose,"Assumption: given at routine handling, like growth implants (~0.017 h labor per implant)"
+implant.productivity_gain,0.0,0.0,0.02,fraction of output value,Off in base: Bovaer trials show no consistent milk gain from redirected feed energy
+implant.adverse_event_rate,0.0005,0.0,0.003,serious adverse events per head,Target to prove in trials (no data yet). ArkeaBio reported no adverse effects in its 10-cow trial.
+dairy.ch4_kg,117,100,140,kg CH4/cow-yr enteric,IPCC 2006 Tier 1 default for Western Europe; Ireland Tier 2 = 108.8
+dairy.addressable_head,30000000,,,dairy cows in markets that pay for methane cuts,"Assumption: EU, UK, NZ and US processors with Scope 3 targets"
+dairy.max_share,0.25,0.1,0.4,share of addressable head at maturity,Assumption
+dairy.ramp_years,8,,,yr to reach max share,Assumption
+dairy.price,15,8,25,$ per cow-yr implant fee,Assumption: well below Bovaer's $93-105 per cow-yr
+dairy.carbon_value,30,15,60,$/t CO2e paid for verified dairy methane cuts (credits or insetting),Trade press: buyers paying $30-50/t for verified dairy methane credits (The Bullvine); Denmark's tax is ~$43/t effective by 2035
+dairy.output_value,4800,,,$ milk revenue per cow-yr,"Assumption: ~24,000 lb/cow-yr at ~$20/cwt"
+beef.ch4_kg,72,55,90,kg CH4/head-yr enteric,IPCC Tier 1 factor for beef cows (as used in Canadian inventory studies)
+beef.addressable_head,100000000,,,grazing beef cattle in reachable markets,"Assumption: US, Brazil, Australia, Argentina range herds; ~1.2-1.5B cattle worldwide (ArkeaBio)"
+beef.max_share,0.1,0.03,0.2,share of addressable head at maturity,Assumption
+beef.ramp_years,8,,,yr to reach max share,Assumption
+beef.price,4,2,8,$ per head-yr implant fee,"Assumption: priced near growth implants, which ranchers already buy"
+beef.carbon_value,15,5,30,$/t CO2e,Assumption: range cattle are harder to verify than barn-fed dairy
+beef.output_value,1500,,,$ value of weight gain per head-yr,Assumption
+data.enabled,1,,,1 = offered (dairy),"Passive RFID with temperature, read at the parlour"
+data.fee,8,0,20,$ per cow-yr,"Assumption. Collars, tags and boluses cost ~$40-197 per cow-yr (Our Land and Water NZ); smaXtec ~EUR 60 all-in."
+data.attach,0.3,0.1,0.6,share of treated dairy cows on the data plan,Assumption
+data.farmer_value,12,0,40,$ per cow-yr for parlour-read ID and temperature,"Assumption: well below full sensor systems, which claim ~$200/cow-yr (smaXtec-funded IFCN study)"
+data.margin,0.7,,,gross margin on data,Assumption
+company.rd_years,4,3,6,yr before first sales (trials and approval),Assumption. ArkeaBio targets first product ~2028 after 2026-27 field trials.
+company.rd_opex,20000000,10000000,35000000,$/yr during R&D,Assumption. ArkeaBio has raised $40M+ to date.
+company.corporate_opex,15000000,8000000,25000000,$/yr once selling,Assumption
+company.sales_share,0.1,0.05,0.2,fraction of revenue for sales and marketing,Assumption
+company.channel_margin,0.3,0.2,0.4,distributor/vet margin on implant fees,Assumption: animal-health distribution
+company.mrv_cost,1.0,0.5,3.0,$ per head-yr for verification and registry,Assumption
+company.aggregator_share,0.15,0.0,0.25,share of credit value kept as aggregator,"Concord Agriculture Partners: 85% to farmer, 15% to platform (The Bullvine)"
+learning.first_year_experience,1000000,,,doses (experience at first sale),Assumption: trial and launch lots
+learning.noak_experience,100000000,30000000,300000000,cumulative doses to reach NOAK cost,Assumption
+learning.rate_cogs,0.15,0.08,0.2,cost reduction per doubling of doses,Assumption
+ghg.gwp100_ch4,27,,,t CO2e per t CH4,IPCC AR6 GWP100 for non-fossil methane (from memory)
+bau.bovaer_cost,99,58,164,$ per cow-yr,dsm-firmenich: ~$93-105 per lactating cow-yr; ~$58-64 projected from the Dalry plant; $164 at $0.45/day contracts (The Bullvine)
+bau.bovaer_efficacy,0.28,0.24,0.3,fraction cut,~28-30% average; field-realistic 24% (The Bullvine)
+bau.denmark_tax_2035,43,,,$/t CO2e effective,Denmark: DKK 750/t from 2035 with 60% deduction = DKK 300 (~$43) effective
+bau.bolus_cost,69,,,$ per cow-yr,"smaXtec bolus herd: ~EUR 60/cow-yr all-in (Irish Farmers Journal), x1.15"
+bau.bolus_value,200,,,$ per cow-yr,IFCN study commissioned with smaXtec: ~$190-210/cow-yr (vendor-linked)
+score.impact,5,,,,Judgment: livestock methane ~3 Gt CO2e/yr
+score.breakthrough,4,,,,Judgment: year-long slow-release antigen is new; the vaccine itself is ArkeaBio's
+score.feasibility,3,,,,Judgment: 12.9% in a 10-cow trial
+score.scalability,5,,,,Judgment: rides existing implant and vaccine channels
+score.demand,2,,,,"Judgment: payer depends on credits, insetting or taxes"
+score.white_space,2,,,,"Judgment: ArkeaBio, Pirbright/Bezos Earth Fund"
+score.validation,3,,,,Judgment: respiration-chamber trials are cheap and fast
