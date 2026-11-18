@@ -1,0 +1,307 @@
+# Methane-reducing cattle implant: TEA inputs. NOAK unless noted.
+# "Assumption" = judgment, not sourced.
+
+[meta]
+project = "Methane-reducing cattle implant"
+boundary = "Implant manufacture, distribution and data platform to the farmer's methane cut; excludes trial costs beyond R&D opex."
+functional_units = "Farmer's cost per t CO2e avoided; dairy farmer's net gain per cow-year."
+
+# --- Product ------------------------------------------------------------------
+
+[implant.efficacy]
+base = 0.20
+low = 0.10
+high = 0.30
+unit = "fraction of enteric methane cut, averaged over implant life"
+source = "ArkeaBio targets 20%; its prototype vaccine cut methane 12.9% over 105 days (Texas A&M trial)"
+
+[implant.duration_months]
+base = 12
+low = 6
+high = 18
+unit = "months per implant"
+source = "Target. ArkeaBio aims for a vaccine effective for 6 months; slow release is this concept's breakthrough."
+
+[implant.cogs]
+base = 2.50
+low = 1.50
+high = 5.00
+unit = "$ per dose at NOAK (antigen, release matrix, RFID tag)"
+source = "Assumption. Antigen doses are milligram-scale (ArkeaBio); beef growth implants sell for ~$1-3 per calf."
+
+[implant.capex_per_dose]
+base = 1.0
+low = 0.5
+high = 3.0
+unit = "$ per dose/yr of new manufacturing capacity"
+source = "Assumption: contract manufacturing for the biologic, in-house assembly"
+
+[implant.admin_cost]
+base = 0.50
+low = 0.25
+high = 2.0
+unit = "$ farmer labor per dose"
+source = "Assumption: given at routine handling, like growth implants (~0.017 h labor per implant)"
+
+[implant.productivity_gain]
+base = 0.0
+low = 0.0
+high = 0.02
+unit = "fraction of output value"
+source = "Off in base: Bovaer trials show no consistent milk gain from redirected feed energy"
+
+[implant.adverse_event_rate]
+base = 0.0005
+low = 0.0
+high = 0.003
+unit = "serious adverse events per head"
+source = "Target to prove in trials (no data yet). ArkeaBio reported no adverse effects in its 10-cow trial."
+
+# --- Segments -----------------------------------------------------------------
+
+[dairy.ch4_kg]
+base = 117
+low = 100
+high = 140
+unit = "kg CH4/cow-yr enteric"
+source = "IPCC 2006 Tier 1 default for Western Europe; Ireland Tier 2 = 108.8"
+
+[dairy.addressable_head]
+base = 30_000_000
+unit = "dairy cows in markets that pay for methane cuts"
+source = "Assumption: EU, UK, NZ and US processors with Scope 3 targets"
+
+[dairy.max_share]
+base = 0.25
+low = 0.10
+high = 0.40
+unit = "share of addressable head at maturity"
+source = "Assumption"
+
+[dairy.ramp_years]
+base = 8
+unit = "yr to reach max share"
+source = "Assumption"
+
+[dairy.price]
+base = 15
+low = 8
+high = 25
+unit = "$ per cow-yr implant fee"
+source = "Assumption: well below Bovaer's $93-105 per cow-yr"
+
+[dairy.carbon_value]
+base = 30
+low = 15
+high = 60
+unit = "$/t CO2e paid for verified dairy methane cuts (credits or insetting)"
+source = "Trade press: buyers paying $30-50/t for verified dairy methane credits (The Bullvine); Denmark's tax is ~$43/t effective by 2035"
+
+[dairy.output_value]
+base = 4800
+unit = "$ milk revenue per cow-yr"
+source = "Assumption: ~24,000 lb/cow-yr at ~$20/cwt"
+
+[beef.ch4_kg]
+base = 72
+low = 55
+high = 90
+unit = "kg CH4/head-yr enteric"
+source = "IPCC Tier 1 factor for beef cows (as used in Canadian inventory studies)"
+
+[beef.addressable_head]
+base = 100_000_000
+unit = "grazing beef cattle in reachable markets"
+source = "Assumption: US, Brazil, Australia, Argentina range herds; ~1.2-1.5B cattle worldwide (ArkeaBio)"
+
+[beef.max_share]
+base = 0.10
+low = 0.03
+high = 0.20
+unit = "share of addressable head at maturity"
+source = "Assumption"
+
+[beef.ramp_years]
+base = 8
+unit = "yr to reach max share"
+source = "Assumption"
+
+[beef.price]
+base = 4
+low = 2
+high = 8
+unit = "$ per head-yr implant fee"
+source = "Assumption: priced near growth implants, which ranchers already buy"
+
+[beef.carbon_value]
+base = 15
+low = 5
+high = 30
+unit = "$/t CO2e"
+source = "Assumption: range cattle are harder to verify than barn-fed dairy"
+
+[beef.output_value]
+base = 1500
+unit = "$ value of weight gain per head-yr"
+source = "Assumption"
+
+# --- Data ---------------------------------------------------------------------
+
+[data.enabled]
+base = 1
+unit = "1 = offered (dairy)"
+source = "Passive RFID with temperature, read at the parlour"
+
+[data.fee]
+base = 8
+low = 0
+high = 20
+unit = "$ per cow-yr"
+source = "Assumption. Collars, tags and boluses cost ~$40-197 per cow-yr (Our Land and Water NZ); smaXtec ~EUR 60 all-in."
+
+[data.attach]
+base = 0.30
+low = 0.10
+high = 0.60
+unit = "share of treated dairy cows on the data plan"
+source = "Assumption"
+
+[data.farmer_value]
+base = 12
+low = 0
+high = 40
+unit = "$ per cow-yr for parlour-read ID and temperature"
+source = "Assumption: well below full sensor systems, which claim ~$200/cow-yr (smaXtec-funded IFCN study)"
+
+[data.margin]
+base = 0.70
+unit = "gross margin on data"
+source = "Assumption"
+
+# --- Company ------------------------------------------------------------------
+
+[company.rd_years]
+base = 4
+low = 3
+high = 6
+unit = "yr before first sales (trials and approval)"
+source = "Assumption. ArkeaBio targets first product ~2028 after 2026-27 field trials."
+
+[company.rd_opex]
+base = 20_000_000
+low = 10_000_000
+high = 35_000_000
+unit = "$/yr during R&D"
+source = "Assumption. ArkeaBio has raised $40M+ to date."
+
+[company.corporate_opex]
+base = 15_000_000
+low = 8_000_000
+high = 25_000_000
+unit = "$/yr once selling"
+source = "Assumption"
+
+[company.sales_share]
+base = 0.10
+low = 0.05
+high = 0.20
+unit = "fraction of revenue for sales and marketing"
+source = "Assumption"
+
+[company.channel_margin]
+base = 0.30
+low = 0.20
+high = 0.40
+unit = "distributor/vet margin on implant fees"
+source = "Assumption: animal-health distribution"
+
+[company.mrv_cost]
+base = 1.0
+low = 0.5
+high = 3.0
+unit = "$ per head-yr for verification and registry"
+source = "Assumption"
+
+[company.aggregator_share]
+base = 0.15
+low = 0.0
+high = 0.25
+unit = "share of credit value kept as aggregator"
+source = "Concord Agriculture Partners: 85% to farmer, 15% to platform (The Bullvine)"
+
+[learning.first_year_experience]
+base = 1_000_000
+unit = "doses (experience at first sale)"
+source = "Assumption: trial and launch lots"
+
+[learning.noak_experience]
+base = 100_000_000
+low = 30_000_000
+high = 300_000_000
+unit = "cumulative doses to reach NOAK cost"
+source = "Assumption"
+
+[learning.rate_cogs]
+base = 0.15
+low = 0.08
+high = 0.20
+unit = "cost reduction per doubling of doses"
+source = "Assumption"
+
+# --- BAU and GHG --------------------------------------------------------------
+
+[ghg.gwp100_ch4]
+base = 27
+unit = "t CO2e per t CH4"
+source = "IPCC AR6 GWP100 for non-fossil methane (from memory)"
+
+[bau.bovaer_cost]
+base = 99
+low = 58
+high = 164
+unit = "$ per cow-yr"
+source = "dsm-firmenich: ~$93-105 per lactating cow-yr; ~$58-64 projected from the Dalry plant; $164 at $0.45/day contracts (The Bullvine)"
+
+[bau.bovaer_efficacy]
+base = 0.28
+low = 0.24
+high = 0.30
+unit = "fraction cut"
+source = "~28-30% average; field-realistic 24% (The Bullvine)"
+
+[bau.denmark_tax_2035]
+base = 43
+unit = "$/t CO2e effective"
+source = "Denmark: DKK 750/t from 2035 with 60% deduction = DKK 300 (~$43) effective"
+
+[bau.bolus_cost]
+base = 69
+unit = "$ per cow-yr"
+source = "smaXtec bolus herd: ~EUR 60/cow-yr all-in (Irish Farmers Journal), x1.15"
+
+[bau.bolus_value]
+base = 200
+unit = "$ per cow-yr"
+source = "IFCN study commissioned with smaXtec: ~$190-210/cow-yr (vendor-linked)"
+
+[score.impact]
+base = 5
+source = "Judgment: livestock methane ~3 Gt CO2e/yr"
+[score.breakthrough]
+base = 4
+source = "Judgment: year-long slow-release antigen is new; the vaccine itself is ArkeaBio's"
+[score.feasibility]
+base = 3
+source = "Judgment: 12.9% in a 10-cow trial"
+[score.scalability]
+base = 5
+source = "Judgment: rides existing implant and vaccine channels"
+[score.demand]
+base = 2
+source = "Judgment: payer depends on credits, insetting or taxes"
+[score.white_space]
+base = 2
+source = "Judgment: ArkeaBio, Pirbright/Bezos Earth Fund"
+[score.validation]
+base = 3
+source = "Judgment: respiration-chamber trials are cheap and fast"
